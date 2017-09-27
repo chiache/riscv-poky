@@ -6,6 +6,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.GPLv2;md5=751419260aa954499f
 
 SRCREV = "1e2518d415ae8e9c8247d823fcb435ddbd0a0854"
 SRC_URI = "git://github.com/riscv/riscv-isa-sim.git \
+           file://spike-cache-trace.patch \
            file://spike-rpath.patch \
            file://spike-makefile.patch"
 

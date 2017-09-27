@@ -63,7 +63,10 @@ MACHINE=${MACHINE:=""}
 KERNEL=${KERNEL:=""}
 ROOTFS=${ROOTFS:=""}
 VM=${VM:=""}
+MEMARCH="-m2048 --ic=64:8:64 --dc=64:8:64 --l2=512:8:64"
 FSTYPE=${FSTYPE:=""}
+CACHE_TRACE=${CACHE_TRACE:=""}
+if [ "x$GDB" == "x1" ]; then BITBANG="--rbb-port=9824"; fi
 LAZY_ROOTFS=""
 SCRIPT_QEMU_OPT=""
 SCRIPT_QEMU_EXTRA_OPT=""
@@ -378,6 +381,7 @@ else
     echo "VMDK:   [$VM]"
 fi
 echo "FSTYPE: [$FSTYPE]"
+echo "MEMARCH: [$MEMARCH]"
 
 setup_sysroot
 
@@ -387,9 +391,14 @@ BBL_PATH="$OE_TMPDIR/work/riscv64-poky-linux/riscv-pk/1.0-r0/build/bbl"
 echo "SPIKE_BIN: [$SPIKE_BIN]"
 echo "BBL_PATH: [$BBL_PATH]"
 
+if [ "x$CACHE_TRACE" != "x" ]; then
+    echo "CACHE_TRACE: [$CACHE_TRACE]"
+    CACHE_TRACE="--cache-trace=$CACHE_TRACE"
+fi
+
 echo
 
 # OECORE_NATIVE_SYSROOT is now set for all cases
 
-$SPIKE_BIN +disk=$ROOTFS $BBL_PATH
+$SPIKE_BIN $MEMARCH $BITBANG $CACHE_TRACE +disk=$ROOTFS $BBL_PATH
 exit $?
