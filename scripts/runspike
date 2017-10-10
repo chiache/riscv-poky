@@ -63,7 +63,7 @@ MACHINE=${MACHINE:=""}
 KERNEL=${KERNEL:=""}
 ROOTFS=${ROOTFS:=""}
 VM=${VM:=""}
-MEMARCH="-m2048 --ic=64:8:64 --dc=64:8:64 --l2=512:8:64"
+MEMARCH=${MEMARCH:="-m2048 --ic=64:8:64 --dc=64:8:64 --l2=512:8:64"}
 FSTYPE=${FSTYPE:=""}
 CACHE_TRACE=${CACHE_TRACE:=""}
 if [ "x$GDB" == "x1" ]; then BITBANG="--rbb-port=9824"; fi
