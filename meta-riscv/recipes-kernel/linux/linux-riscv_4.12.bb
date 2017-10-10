@@ -41,6 +41,8 @@ SRC_URI = "git://github.com/riscv/riscv-linux.git;branch=firesim;destsuffix=${S}
 
 SRC_URI += "file://defconfig"
 
+SRC_URI += "file://debug.patch"
+
 SRC_URI[kernel.md5sum] = "70c4571bfb7ce7ccb14ff43b50165d43"
 SRC_URI[kernel.sha256sum] = "e158f3c69da87c2ec28d0f194dbe18b05e0d0b9e1142566615cea3390bab1c6a"
 
