@@ -17,7 +17,7 @@ IMAGE_INSTALL += "python-numpy python-subprocess python-ctypes python-html pytho
 # Basic toolchain on target
 IMAGE_INSTALL += "gcc binutils glibc glibc-dev libgcc libgcc-dev libstdc++ libstdc++-dev"
 
-IMAGE_INSTALL += "sqlite3 sqlite-sample"
+IMAGE_INSTALL += "sqlite3 sqlite-sample hunspell"
 
 IMAGE_LINGUAS = " "
 
